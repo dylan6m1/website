@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "images/slideshow/springtown_pool_03.jpg",
     "images/slideshow/joy_again_01.jpg",
     "images/slideshow/uc_davis_01.jpg",
-    "images/springtown_pool_01.jpg",
   ];
 
   // Preload images
