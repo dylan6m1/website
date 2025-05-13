@@ -37,19 +37,19 @@ h1, h2, p {
   border-radius: 6px; /* optional */
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1900px) {
   .portfolio-masonry {
     column-count: 3;
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1450px) {
   .portfolio-masonry {
     column-count: 2;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1000px) {
   .portfolio-masonry {
     column-count: 1;
   }
