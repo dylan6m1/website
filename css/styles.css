@@ -55,39 +55,6 @@ h1, h2, p {
   }
 }
 
-/*
-
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Increases Image Display Size /
-  gap: 20px;
-  /* padding: 40px 20px; Padding Between Images /
-  width: 100vw;          /* Full viewport width /
-  max-width: 100%;       /* Prevent overflow /
-  padding: 20px;         /* Optional spacing /
-  box-sizing: border-box; /* Ensures padding doesn't exceed width /
-  margin: 0 auto;
-}
-
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-  padding: 40px;
-  box-sizing: border-box;
-  justify-content: center; /* This keeps the grid centered /
-  max-width: 100%;
-}
-
-.portfolio-grid img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  display: block;
-}
-*/
-
-
 .image-wrapper {
   width: 100%;
   aspect-ratio: 4 / 3; /* Can adjust to 1 / 1 or others if preferred */
@@ -107,11 +74,24 @@ h1, h2, p {
 }
 
 
-
 /* Navigation Links */
 .nav-links {
   margin: 30px 0;
 }
+
+@media (max-width: 1000px) { /* Mobile Resize Navigation Links */
+  .nav-overlay {
+    top: 10px;
+    left: 10px;
+  }
+
+  .nav-overlay a {
+    font-size: 1.2em;        /* smaller font size */
+    margin-right: 10px;      /* less horizontal spacing */
+    display: inline-block;   /* ensures better wrapping */
+  }
+}
+
 
 /* Footer */
 footer {
@@ -120,6 +100,7 @@ footer {
   color: #aaa;
   padding-bottom: 20px;
 }
+
 
 /* Lightbox Styles */
 #lightbox {
@@ -156,10 +137,12 @@ footer {
   z-index: 1001;
 }
 
+
 /* Pointer Hand Over Image */
 .zoomable {
   cursor: pointer; 
 }
+
 
 /* Slideshow Background Layers */
 .background-slideshow {
@@ -183,12 +166,12 @@ footer {
     opacity: 0;
   }
   
+
   /* Ensure the first background is visible at start */
   .background-layer:first-child {
     opacity: 1;
   }
 
-/* Overlay Navigation Links */
 
 /* Hero Slideshow Section */
 .slideshow-hero {
@@ -197,6 +180,7 @@ footer {
     overflow: hidden;
   }
   
+
   /* Slideshow Layers */
   .slideshow-container {
     position: absolute;
@@ -224,6 +208,23 @@ footer {
   .slideshow-layer.layer2 {
     z-index: 2;
   }
+
+@media (max-width: 1000px) {
+  .slideshow-layer {
+    background-position: top center; /* or another value that better suits your images */
+  }
+}
+
+@media (max-width: 1000px) {
+  .focus-top-left {
+    background-position: top left;
+  }
+
+  .focus-bottom {
+    background-position: bottom center;
+  }
+}
+
   
   /* Navigation Overlay */
   .nav-overlay {
@@ -240,6 +241,7 @@ footer {
     margin-right: 15px;
     box-shadow: none;  /* Removes any shadow */
   }
+
 
   /* Main Content (below slideshow) */
   .main-content {
@@ -296,6 +298,7 @@ footer {
     color: #555;
   }
 
+
 /* Article Page */
 .article-content {
   max-width: 800px;
@@ -328,6 +331,7 @@ footer {
   margin-bottom: 20px;
 }
 
+
 /* Hero Section */
 .about-hero {
   background-image: url('../images/about.jpg'); /* Replace with your image */
@@ -345,9 +349,17 @@ footer {
 .about-hero::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  /*background: rgba(0, 0, 0, 0.5); /* Optional dark overlay */
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  /* background: rgba(0, 0, 0, 0.5); /* Optional dark overlay */
   z-index: 1;
+}
+
+/* Shift background focus to the left on mobile */
+@media (max-width: 1800px) {
+  .about-hero {
+    background-position: 8% center; /* Adjust this as needed */
+  }
 }
 
 .hero-text {
@@ -364,6 +376,7 @@ footer {
 .hero-text p {
   font-size: 1.2rem;
 }
+
 
 /* Scroll Section */
 .about-scroll {
@@ -426,3 +439,49 @@ iframe {
   padding-top: 20%;
   font-family: Arial, sans-serif;
 }
+
+  .gallery-page {
+    padding: 40px 0 0;
+    margin: 40px 0 40px; /* margin 40px above and below page title at top of page*/
+  }
+
+  .gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+  }
+
+  .gallery-entry {
+    border: 1px solid black;
+    /* border-radius: 8px; rounds edges of images*/
+    width: 600px;
+    overflow: hidden;
+    background-color: black;
+    transition: transform 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .gallery-entry:hover {
+    transform: scale(1.03);
+  }
+
+  .gallery-entry img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .gallery-content {
+    padding: 15px;
+  }
+
+  .gallery-title {
+    font-size: 1.2em;
+    margin: 10px 0 10px;
+  }
+
+  .gallery-summary {
+    font-size: 0.95em;
+    color: #555;
+  }
