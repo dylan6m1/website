@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -266,7 +270,7 @@ footer {
   .blog-entry {
     border: 1px solid black;
     /* border-radius: 8px; rounds edges of images*/
-    width: 300px;
+    width: 800px; /* adjust image size */
     overflow: hidden;
     background-color: black;
     transition: transform 0.2s;
@@ -280,8 +284,8 @@ footer {
 
   .blog-entry img {
     width: 100%;
-    height: 180px;
-    object-fit: cover;
+    height: auto;
+    display: block;
   }
 
   .blog-content {
@@ -300,10 +304,11 @@ footer {
 
 
 /* Article Page */
+/* Article Page */
 .article-content {
-  max-width: 800px;
+  max-width: 1100px;        /* wider for split image+text layout */
   margin: 100px auto;
-  padding: 0 20px;
+  padding: 0 20px 40px;
   background: black;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -314,6 +319,7 @@ footer {
   height: auto;
   border-radius: 8px;
   margin-bottom: 20px;
+  display: block;
 }
 
 .article-content h1 {
@@ -329,8 +335,151 @@ footer {
 
 .article-content p {
   margin-bottom: 20px;
+  line-height: 1.7;
+  color: #ddd;
 }
 
+/* Optional intro paragraph */
+.article-content .lede {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+  color: #ddd;
+}
+
+
+/* --- Alternating image/text sections --- */
+.split {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: center;
+  margin: 60px 0;
+}
+
+.split.reverse {
+  grid-template-columns: 1fr 1.2fr;
+}
+
+.split.reverse .media { order: 2; }
+.split.reverse .copy  { order: 1; }
+
+.media img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 0;
+}
+
+.media figcaption {
+  margin-top: 10px;
+  font-size: 0.95em;
+  color: #aaa;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.copy h2 {
+  margin-top: 0;
+  text-align: left;
+}
+
+.copy p, .copy li {
+  text-align: left;
+  line-height: 1.7;
+  color: #ddd;
+}
+
+.bullets {
+  margin: 15px 0 0;
+  padding-left: 18px;
+}
+
+
+/* --- Full-width panels for tables/graphs --- */
+.full {
+  margin: 70px 0;
+  text-align: left;
+}
+
+.panel {
+  border: 1px solid #111;
+  padding: 20px;
+  border-radius: 10px;
+  background: #050505;
+}
+
+.caption {
+  margin: 12px 0 0;
+  font-size: 0.95em;
+  color: #aaa;
+  text-align: left;
+}
+
+/* Tables */
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.98em;
+}
+
+table.data th, table.data td {
+  border-bottom: 1px solid #111;
+  padding: 10px 8px;
+  text-align: left;
+  color: #ddd;
+}
+
+table.data th {
+  color: #fff;
+  font-weight: bold;
+}
+
+
+/* --- Example gallery strips --- */
+.gallery {
+  margin: 70px 0;
+  text-align: left;
+}
+
+.gallery .thumbs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.gallery figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.gallery figure figcaption {
+  margin-top: 10px;
+  color: #aaa;
+  text-align: left;
+  line-height: 1.4;
+}
+
+
+/* --- Mobile --- */
+@media (max-width: 900px) {
+  .split, .split.reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .split.reverse .media,
+  .split.reverse .copy {
+    order: initial;
+  }
+
+  .gallery .thumbs {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* Hero Section */
 .about-hero {
@@ -416,20 +565,77 @@ footer {
   line-height: 1.6;
 }
 
+
+/* astro video background */
 #video-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
+  position: relative;
+  width: 100%;
   height: 100vh;
-  pointer-events: none; /* so users can click through it */
-  z-index: -1;
+  overflow: hidden;
 }
 
-iframe {
-  width: 100vw;
-  height: 100vh;
+#video-background iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120vw; /* Wider than screen */
+  height: 120vh; /* Taller than screen */
+  transform: translate(-50%, -55%);
+  pointer-events: none;
 }
+
+
+  .astro-content {
+    padding: 50px 20px;
+    background-color: black;
+  }
+
+  .astro-masonry {
+  column-count: 4; /* Adjust for screen size */
+  column-gap: 40px;
+  padding: 40px;
+  }
+
+.astro-masonry img {
+  width: 100%;
+  margin-bottom: 40px;
+  display: block;
+  break-inside: avoid;
+  border-radius: 6px; /* optional */
+}
+
+  .fourbyfive-masonry {
+  column-count: 3; /* Adjust for screen size */
+  column-gap: 40px;
+  padding: 40px;
+  }
+
+  .fourbyfive-masonry img {
+  width: 100%;
+  margin-bottom: 40px;
+  display: block;
+  break-inside: avoid;
+  border-radius: 6px; /* optional */
+}
+
+   @media (max-width: 1900px) {
+   .astro-masonry {
+     column-count: 3;
+    }
+  }
+
+  @media (max-width: 1450px) {
+   .astro-masonry {
+     column-count: 2;
+   }
+  }
+
+  @media (max-width: 1000px) {
+   .astro-masonry {
+     column-count: 1;
+    }
+  }
+
 
 .content {
   position: relative;
@@ -485,3 +691,190 @@ iframe {
     font-size: 0.95em;
     color: #555;
   }
+
+  /* scroll down arrow */
+.scroll-down {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  color: white;
+  text-decoration: none;
+  z-index: 5;
+  opacity: 0.6;
+}
+
+.scroll-down:hover {
+  opacity: 1; /* Full opacity on hover */
+  transform: translateX(-50%) translateY(5px);
+}
+
+/* ================================
+   BLOG ARTICLE (Alex Burke–style rhythm)
+   Big figure > “View fullsize” > caption > text
+   ================================ */
+
+.article-content {
+  max-width: 980px;
+  margin: 110px auto 80px;
+  padding: 0 22px 40px;
+  text-align: left;
+  background: #000;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content p {
+  text-align: left;
+}
+
+.article-content p {
+  line-height: 1.75;
+  color: #ddd;
+  margin: 0 0 22px;
+}
+
+.article-content .meta {
+  color: #9a9a9a;
+  font-size: 0.95em;
+  margin: 0 0 28px;
+}
+
+.article-content .lede {
+  font-size: 1.05em;
+  color: #e3e3e3;
+  margin: 0 0 40px;
+  max-width: 860px;
+}
+
+/* Section spacing like the reference article */
+.post-section {
+  margin: 56px 0;
+}
+
+/* Big figure block */
+.post-figure {
+  margin: 22px 0 44px;
+}
+
+.post-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 0;
+}
+
+/* “View fullsize” line */
+.view-fullsize {
+  display: inline-block;
+  font-size: 0.82em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #bdbdbd;
+  margin: 0 0 10px;
+  text-decoration: none;
+}
+
+.view-fullsize:hover {
+  text-decoration: underline;
+}
+
+/* Caption line under the image */
+.post-caption {
+  margin-top: 12px;
+  color: #a7a7a7;
+  font-size: 0.95em;
+  line-height: 1.45;
+}
+
+/* Small divider for breath */
+.post-divider {
+  height: 1px;
+  background: #111;
+  margin: 52px 0;
+}
+
+/* Two-up layout for side-by-side examples */
+.two-up {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 22px 0 44px;
+}
+
+.two-up .post-figure {
+  margin: 0;
+}
+
+/* Callout box for “Kodak says…” / “My notes…” */
+.callout {
+  border: 1px solid #141414;
+  background: #050505;
+  border-radius: 10px;
+  padding: 18px 18px;
+  margin: 28px 0 40px;
+}
+
+.callout h3 {
+  margin: 0 0 10px;
+  font-size: 1.05em;
+  color: #fff;
+}
+
+.callout p {
+  margin: 0;
+}
+
+/* Tables for reciprocity tests */
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 0;
+  font-size: 0.98em;
+}
+
+table.data th,
+table.data td {
+  border-bottom: 1px solid #111;
+  padding: 10px 8px;
+  text-align: left;
+  color: #ddd;
+}
+
+table.data th {
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Graph placeholder (image or exported chart) */
+.graph {
+  border: 1px solid #111;
+  background: #050505;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 16px 0 0;
+}
+
+.graph img {
+  margin: 0;
+  border-radius: 8px;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .two-up {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wip-center {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
