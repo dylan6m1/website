@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Astro - McGrory</title>
+  <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+  <link rel="icon" href="../../images/logo.jpg" type="image/png">
+  <style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    overflow-x: hidden; /* allow vertical scrolling */
+    font-family: Arial, sans-serif;
+  }
+  </style>
+</head>
+<body>
+
+      <!-- Navigation (copied for consistency) -->
+      <div class="nav-overlay">
+        <a href="../../index.html">Portfolio</a>
+        <a href="../gallery.html">Collections</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html">Blog</a>
+      </div>
+
+  <!-- YouTube video background -->
+  <section class="astro-timelapse">
+  <div id="video-background">
+    <iframe
+     src="https://www.youtube.com/embed/BmPz8nFFu80?autoplay=1&mute=1&controls=0&loop=1&playlist=BmPz8nFFu80&playsinline=1&modestbranding=1&rel=0"
+     frameborder="0"
+      allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <a href="#astro-portfolio" class="scroll-down">&#11167;</a>
+  </section>
+
+    <!-- Main Portfolio Content -->
+    <section id="astro-portfolio" class="astro-portfolio"></section>
+    <div class="astro-content">
+        <div class="astro-masonry">
+        <img src="../../images/yosemite_astro_01.jpg" alt="Photo 1" class="zoomable">
+        <img src="../../images/springtown_pool_01.jpg" alt="Photo 3" class="zoomable">
+        <img src="../../images/gg_01.jpg" alt="Photo 7" class="zoomable">
+        <img src="../../images/power_plant_01.jpg" alt="Photo 9" class="zoomable">
+      </div>
+    </section>
+
+      <footer>
+        <p>Contact: dpmcgrory@ucdavis.edu</p>
+        <p>&copy; 2025 Dylan McGrory. All rights reserved.</p>
+      </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="hidden">
+      <span id="close-btn">&times;</span>
+      <img id="lightbox-img" src="" alt="Zoomed Photo">
+    </div>
+  
+    <script src="../../js/slideshow.js"></script>
+    <script src="../../js/lightbox.js"></script>
+
+
+</body>
+</html>
